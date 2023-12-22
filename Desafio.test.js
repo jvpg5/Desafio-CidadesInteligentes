@@ -12,10 +12,8 @@ test('"sdsadar4ew" corresponde a coordenada 4 + 4 = 8', () => {
     expect(CalcularMetadados("sdsadar4ew")).toBe(8);
 });
 
-test('"sdsew" Não tem digitos', () => {
-    try{
+test('"sdsew" Não tem digitos, então ele "throw" um erro', () => {
+    expect(()=>{
         CalcularMetadados("sdsew");
-    }catch(e){
-        expect(e.message).toBe("ERRO: Não tem dígito na string!")
-    }
+    }).toThrow();
 });

@@ -1,4 +1,4 @@
-//let metadados = ["urewur88rere0rew", "ur234324ur88rere0rew", "sdsadar4ew"];
+const metadados =  require("./entrada.json");
 
 function CalcularMetadados(metadado){
   let primeiroDigito, ultimoDigito;
@@ -11,6 +11,8 @@ function CalcularMetadados(metadado){
     }
   }
 
+  if(primeiroDigito == null) throw "ERRO: Não tem dígito na string!";
+
   for(let i = metadado.length-1; i >= 0; i--){
     if(!isNaN(metadado[i])){
       ultimoDigito = Number(metadado[i]);
@@ -18,7 +20,7 @@ function CalcularMetadados(metadado){
     }
   }
 
-  if(primeiroDigito == null) throw "ERRO: Não tem dígito na string!";
+  
 
   return primeiroDigito + ultimoDigito;
 
@@ -29,5 +31,13 @@ function CalcularMetadados(metadado){
 
 module.exports = CalcularMetadados;
 
-//metadados.forEach((metadado)=> console.log(CalcularMetadados(metadado)));
+metadados.forEach((metadado)=> {
+  
+  try{
+    console.log(`"${metadado}" corresponde as cordenadas `+ CalcularMetadados(metadado));
+  }catch(e){
+    console.log(`"${metadado}" metadado inválido! -- ${e}`);
+  }
+
+});
 
